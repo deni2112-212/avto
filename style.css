@@ -1,0 +1,96 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f2f4f6;
+  color: #333;
+  line-height: 1.5;
+}
+
+main { padding: 20px; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* FLEX: шапка и меню */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: #1f252c;
+  padding: 12px 20px;
+}
+.header h2 { margin: 0; color: #fff; }
+.menu { display: flex; gap: 15px; flex-wrap: wrap; }
+.menu a { color: #fff; text-decoration: none; }
+.menu a:hover { color: #ff7a6b; }
+
+.hero-img { border-radius: 8px; margin: 15px 0; }
+
+/* GRID: карточки (телефон - 1 колонка) */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #d5dbe0;
+}
+
+/* Название машины сверху */
+.card h3 {
+  margin: 0;
+  padding: 14px 16px;
+  background: #1f252c;
+  color: #fff;
+  font-size: 1.15rem;
+}
+.card--gold h3 { background: #6b5420; }
+
+/* Характеристики снизу (FLEX-строки) */
+.specs { list-style: none; margin: 0; padding: 8px 16px 14px; }
+.specs li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #e6eaed;
+}
+.specs li:last-child { border-bottom: 0; }
+.specs span { color: #666; }
+.specs b { text-align: right; }
+
+/* Блоки-ссылки на главной */
+.link-box {
+  display: block;
+  background: #fff;
+  padding: 18px;
+  border-radius: 8px;
+  border-left: 6px solid #e2412f;
+  color: inherit;
+  text-decoration: none;
+}
+.link-box--gold { border-left-color: #c9a24a; }
+.link-box h3 { margin: 0 0 6px; }
+.link-box p { margin: 0; }
+
+.card p { padding: 0 16px; }
+.note { font-size: .95rem; color: #555; }
+
+.footer { background: #1f252c; color: #fff; text-align: center; padding: 15px; }
+
+/* МЕДИАЗАПРОСЫ */
+/* Планшет от 600px: 2 колонки */
+@media (min-width: 600px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+/* Компьютер от 900px: 3 колонки, контент по центру */
+@media (min-width: 900px) {
+  .grid { grid-template-columns: 1fr 1fr 1fr; }
+  main { max-width: 1100px; margin: 0 auto; }
+}
