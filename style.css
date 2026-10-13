@@ -1,4 +1,7 @@
-* { box-sizing: border-box; }
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -8,10 +11,7 @@ body {
   line-height: 1.5;
 }
 
-main { padding: 20px; }
-img { max-width: 100%; height: auto; display: block; }
-
-/* FLEX: шапка и меню */
+/* Шапка сайту */
 .header {
   display: flex;
   justify-content: space-between;
@@ -19,41 +19,96 @@ img { max-width: 100%; height: auto; display: block; }
   flex-wrap: wrap;
   gap: 10px;
   background: #1f252c;
-  padding: 12px 20px;
+  padding: 15px 20px;
 }
-.header h2 { margin: 0; color: #fff; }
-.menu { display: flex; gap: 15px; flex-wrap: wrap; }
-.menu a { color: #fff; text-decoration: none; }
-.menu a:hover { color: #ff7a6b; }
 
-.hero-img { border-radius: 8px; margin: 15px 0; }
+.header h2 {
+  margin: 0;
+  color: #fff;
+}
 
-/* GRID: карточки (телефон - 1 колонка) */
+/* Меню */
+.menu {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.menu a:hover {
+  color: #ff7a6b;
+}
+
+/* Основний вміст */
+main {
+  padding: 20px;
+}
+
+main h1 {
+  margin-top: 0;
+  color: #1f252c;
+}
+
+.intro {
+  margin-bottom: 25px;
+}
+
+.intro-text {
+  margin-bottom: 25px;
+}
+
+.engines {
+  margin-top: 30px;
+}
+
+.engines h2 {
+  margin-bottom: 15px;
+}
+
+/* Сітка карток */
 .grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 15px;
 }
 
+/* Картки автомобілів */
 .card {
   background: #fff;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid #d5dbe0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Название машины сверху */
 .card h3 {
   margin: 0;
   padding: 14px 16px;
   background: #1f252c;
   color: #fff;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
 }
-.card--gold h3 { background: #6b5420; }
 
-/* Характеристики снизу (FLEX-строки) */
-.specs { list-style: none; margin: 0; padding: 8px 16px 14px; }
+.card--gold h3 {
+  background: #6b5420;
+}
+
+.card p {
+  padding: 0 16px;
+}
+
+/* Характеристики автомобілів */
+.specs {
+  list-style: none;
+  margin: 0;
+  padding: 8px 16px 14px;
+}
+
 .specs li {
   display: flex;
   justify-content: space-between;
@@ -61,11 +116,22 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 8px 0;
   border-bottom: 1px solid #e6eaed;
 }
-.specs li:last-child { border-bottom: 0; }
-.specs span { color: #666; }
-.specs b { text-align: right; }
 
-/* Блоки-ссылки на главной */
+.specs li:last-child {
+  border-bottom: 0;
+}
+
+.specs span {
+  color: #666;
+  flex: 1;
+}
+
+.specs b {
+  text-align: right;
+  flex: 1;
+}
+
+/* Посилання на добірки */
 .link-box {
   display: block;
   background: #fff;
@@ -74,23 +140,82 @@ img { max-width: 100%; height: auto; display: block; }
   border-left: 6px solid #e2412f;
   color: inherit;
   text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-.link-box--gold { border-left-color: #c9a24a; }
-.link-box h3 { margin: 0 0 6px; }
-.link-box p { margin: 0; }
 
-.card p { padding: 0 16px; }
-.note { font-size: .95rem; color: #555; }
+.link-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-.footer { background: #1f252c; color: #fff; text-align: center; padding: 15px; }
+.link-box--gold {
+  border-left-color: #c9a24a;
+}
 
-/* МЕДИАЗАПРОСЫ */
-/* Планшет от 600px: 2 колонки */
+.link-box h3 {
+  margin: 0 0 6px;
+}
+
+.link-box p {
+  margin: 0;
+}
+
+/* Примітка */
+.note {
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 20px;
+}
+
+/* Підвал */
+.footer {
+  background: #1f252c;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+/* Планшети */
 @media (min-width: 600px) {
-  .grid { grid-template-columns: 1fr 1fr; }
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
-/* Компьютер от 900px: 3 колонки, контент по центру */
+
+/* Комп'ютери */
 @media (min-width: 900px) {
-  .grid { grid-template-columns: 1fr 1fr 1fr; }
-  main { max-width: 1100px; margin: 0 auto; }
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Мобільні телефони */
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu {
+    gap: 10px;
+  }
+
+  .menu a {
+    font-size: 0.9rem;
+  }
+
+  main {
+    padding: 15px;
+  }
+
+  .specs li {
+    gap: 8px;
+    font-size: 0.9rem;
+  }
 }
